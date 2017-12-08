@@ -1,0 +1,197 @@
+.waterfall {
+    position: relative;
+
+    width: 100%;
+}
+
+.waterfall > div {
+    position: absolute;
+
+    box-sizing: border-box;
+}
+
+.blog-item {
+    color: #ababab;
+    background-color: #fff;
+}
+
+.img-wrapper {
+    width: 100%;
+
+    font-size: 0;
+    line-height: 0;
+}
+
+.blog-item img {
+    width: 100%;
+}
+
+.item-info {
+    box-sizing: border-box;
+    padding: 20px 0;
+}
+
+.item-info h4,
+.item-info p {
+    padding: 0 20px;
+}
+
+h4 {
+    margin-bottom: 15px;
+
+    font-size: 16px;
+
+    color: #000;
+}
+
+.item-info p {
+    border-bottom: 1px solid #b4b7b8;
+    padding-bottom: 15px;
+}
+
+.info {
+    overflow: hidden;
+
+    padding: 20px 20px 0 20px;
+}
+
+.info div {
+    box-sizing: border-box;
+    padding-left: 20px;
+    width: 50%;
+    height: 19px;
+
+    line-height: 19px;
+
+    background-repeat: no-repeat;
+    background-position: left 2px;
+    background-size: 15px 13px;
+}
+
+.info div:first-of-type {
+    background-image: url("../images/bubble.png");
+}
+
+.info div:last-of-type {
+    background-image: url("../images/cal.png");
+}
+
+.link-item,
+.aside-item {
+    background: #1ab5b3;
+}
+
+.link-item {
+    padding: 20px;
+
+    font-size: 16px;
+    text-align: center;
+
+    color: #fff;
+}
+
+.link-item a {
+    display: block;
+
+    margin-top: 15px;
+
+    font-size: 14px;
+    font-style: italic;
+    text-decoration: underline;
+
+    color: #fff;
+}
+
+.aside-item {
+    padding-left: 20px;
+}
+
+.aside-wrapper {
+    padding: 20px;
+
+    background: #242b2e;
+}
+
+.aside-wrapper h4 {
+    color: #fff;
+}
+
+.aside-wrapper p {
+    color: #ababab;
+}
+
+.quote-item {
+    padding: 20px 20px 5px 20px;
+
+    font-size: 16px;
+    line-height: 1.3em;
+    text-align: center;
+
+    color: #fff;
+    background: #242b2e;
+}
+
+.quote-item blockquote {
+    position: relative;
+
+    margin-top: 35px;
+
+    color: #1ab5b3;
+}
+
+blockquote::before {
+    display: block;
+
+    position: absolute;
+    left: 50%;
+
+    margin: -10px 0 0 -10px;
+
+    font-size: 4em;
+
+    color: #1ab5b3;
+
+    content: "\201C";
+}
+
+.scroll-to-top {
+    display: none;
+
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
+}
+
+.scroll-btn {
+    display: inline-block;
+
+    width: 30px;
+    height: 30px;
+
+    background-color: #b9c1c7;
+    background-image: url("../images/arrow.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12px 14px;
+}
+
+.loader {
+    z-index: 10;
+
+    background-color: #b4b7b8;
+}
+
+.loading {
+    display: none;
+
+    height: 40px;
+
+    background: #eeeff2 url("../images/Infinity.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+}

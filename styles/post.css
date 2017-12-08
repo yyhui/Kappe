@@ -1,0 +1,316 @@
+#gallery {
+    overflow: hidden;
+
+    position: relative;
+
+    padding-bottom: 77.67%;
+    width: 100%;
+    height: 0;
+
+    font-size: 0;
+}
+
+.list {
+    overflow: hidden;
+
+    position: absolute;
+    top: 0;
+
+    width: 600%;
+}
+
+.item {
+    float: left;
+
+    width: 16.667%;
+}
+
+.btns {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+
+    height: 14px;
+
+    line-height: 14px;
+}
+
+.btns span {
+    display: block;
+    float: left;
+
+    margin: 1px 0 0 8px;
+    box-sizing: border-box;
+    border: 1px solid #e1e1e1;
+    width: 20px;
+    height: 12px;
+
+    background-color: #b6b6b6;
+
+    cursor: pointer;
+}
+
+.btns .on {
+    margin-top: 0;
+    border-color: #000;
+    width: 22px;
+    height: 14px;
+
+    background-color: #40bcba;
+}
+
+.article {
+    border-bottom: 1px solid #b4b7b8;
+    padding: 25px 0 35px;
+}
+
+.article h3 {
+    margin-bottom: 25px;
+}
+
+.article p + p {
+    margin-top: 45px;
+}
+
+.comments {
+    border-bottom: 1px solid #b4b7b8;
+    padding: 25px 0 35px 0;
+}
+
+.user-info {
+    margin-top: 25px;
+    height: 40px;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+}
+
+.user-info > div {
+    margin-left: 25px;
+}
+
+.user-info .name {
+    font-size: 14px;
+    line-height: 1em;
+
+    color: #000;
+}
+
+.user-info .time {
+    color: #d1d1d1;
+}
+
+.user-info .signature {
+    font-size: 16px;
+
+    color: #a3a3a3;
+}
+
+.line {
+    margin: 0 20px;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+}
+
+.broke {
+    border: 1px solid #b4b7b8;
+    border-top: 0;
+    border-right: 0;
+}
+
+.leave h3 {
+    margin: 25px 0 10px 0;
+}
+
+.leave form > div,
+.mess form > div {
+    width: 49%;
+}
+
+label {
+    display: block;
+
+    font-size: 0;
+
+    background-color: #fff;
+}
+
+label div {
+    box-sizing: border-box;
+    border: 1px solid #b4b7b8;
+    padding-top: 11px;
+    width: 60px;
+    height: 60px;
+
+    text-align: center;
+}
+
+label input {
+    box-sizing: border-box;
+    border: 1px solid #b4b7b8;
+    border-left: 0;
+    padding: 20px;
+    width: calc(100% - 60px);
+    height: 60px;
+
+    outline: none;
+}
+
+label div,
+.leave input,
+.leave textarea,
+.mess input,
+.mess textarea {
+    margin-top: 10px;
+}
+
+.leave textarea,
+.leave input[type="submit"],
+.mess textarea,
+.mess input[type="submit"] {
+    width: 100%;
+}
+
+.leave textarea,
+.mess textarea {
+    box-sizing: border-box;
+    border: 1px solid #b4b7b8;
+    padding: 20px;
+    height: 130px;
+
+    resize: none;
+}
+
+.leave input[type="submit"],
+.mess input[type="submit"] {
+    border: 0;
+    border-radius: 0;
+    height: 60px;
+
+    color: #fff;
+    background-color: #1ab5b3;
+}
+
+.post-info h3 {
+    margin-bottom: 10px;
+}
+
+.post-info > div {
+    box-sizing: border-box;
+    border-bottom: 1px solid #b4b7b8;
+    padding: 12px 0;
+    height: 60px;
+
+    line-height: 36px;
+}
+
+.post-info div img {
+    margin-right: 15px;
+}
+
+.tags h3 {
+    margin: 30px 0 15px 0;
+}
+
+.tags div div {
+    display: inline-block;
+
+    margin: 0 8px 10px 0;
+    border: 1px solid #b4b4b4;
+    border-radius: 5px;
+    padding: 12px 16px;
+}
+
+.archives h3 {
+    margin: 20px 0 15px 0;
+}
+
+.archives li {
+    margin-bottom: 10px;
+
+    font-size: 14px;
+}
+
+.project h3 {
+    margin: 30px 0 25px 0;
+}
+
+.project img {
+    width: 33.333%;
+}
+
+.pro-gallery {
+    overflow: hidden;
+}
+
+.pro-gallery h3 {
+    margin: 30px 0 10px 0;
+}
+
+.pro-gallery img {
+    float: left;
+
+    margin: 10px 10px 0 0;
+    width: 78px;
+    height: 78px;
+}
+
+.features h3 {
+    margin: 30px 0 15px 0;
+}
+
+.features ul {
+    list-style-image: url("../images/hook.png");
+
+    margin-left: 20px;
+
+    font-size: 14px;
+}
+
+.features li {
+    margin-bottom: 10px;
+}
+
+#map {
+    margin-left: 300px;
+    width: 100%;
+    height: 100%;
+}
+
+.send {
+    position: absolute;
+    top: 20px;
+    left: 320px;
+
+    box-sizing: border-box;
+    padding: 0 30px;
+    width: 784px;
+    height: 474px;
+
+    color: #a3a3a3;
+    background-color: #fff;
+}
+
+.send h3 {
+    margin: 20px 0 10px 0;
+
+    font-size: 21px;
+    font-weight: normal;
+
+    color: #000;
+}
+
+.send p {
+    margin-top: 20px;
+
+    font-size: 18px;
+    line-height: 1.6em;
+}
+
+.touch {
+    border-bottom: 1px solid #b4b7b8;
+    padding-bottom: 10px;
+}

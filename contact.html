@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Works</title>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/post.css">
+
+    <!--引用百度地图API-->
+    <style type="text/css">
+        html,body{margin:0;padding:0;}
+        .iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
+        .iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+</head>
+<body>
+    <div id="sidebar">
+        <div class="logo"></div>
+        <div class="bar">
+            <ul class="nav">
+                <a href="index.html">HOME</a>
+                <a href="work.html">WORK</a>
+                <a href="about.html">ABOUT</a>
+                <a href="post.html">BLOG</a>
+                <a href="blog.html">SERVICES</a>
+                <a class="current" href="contact.html">CONTACT</a>
+            </ul>
+            <ul class="filter">
+                <h3>Filter</h3>
+                <li>All Works</li>
+                <li>web design</li>
+                <li>illustration</li>
+                <li>photography</li>
+                <li>wallpapers</li>
+                <li>brochures</li>
+            </ul>
+            <div class="social-icons">
+                <a href=""><img src="images/webicon-flickr.png" alt="flickr"></a>
+                <a href=""><img src="images/webicon-googleplus.png" alt="goole+"></a>
+                <a href=""><img src="images/webicon-twitter.png" alt="twitter"></a>
+                <a href=""><img src="images/webicon-pinterest.png" alt="pinterest"></a>
+                <a href=""><img src="images/webicon-dribbble.png" alt="dribbble"></a>
+                <a href=""><img src="images/webicon-behance.png" alt="behance"></a>
+                <a href=""><img src="images/webicon-facebook.png" alt="facebook"></a>
+            </div>
+            <div class="rights">ⓒ 2014 Kappe All Rights Reserved</div>
+        </div>
+    </div>
+    <div id="map"></div>
+    <div class="send">
+        <div class="touch">
+            <h3>Get in touch with us</h3>
+            <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
+        </div>
+        <div class="mess">
+            <h3>Send us a message</h3>
+            <form action="">
+                <div class="fl">
+                    <label for="user">
+                        <div class="fl">
+                            <img src="images/user.png">
+                        </div>
+                        <input id="user" type="text" name="name" placeholder="Name">
+                    </label>
+                    <label for="mail">
+                        <div class="fl">
+                            <img src="images/mail.png">
+                        </div>
+                        <input id="mail" type="text" name="email" placeholder="e-mail">
+                    </label>
+                    <label for="website">
+                        <div class="fl">
+                            <img src="images/link.png">
+                        </div>
+                        <input id="website" type="text" name="website" placeholder="website">
+                    </label>
+                </div>
+                <div class="fr">
+                    <textarea class="message fl">Message</textarea>
+                    <input type="submit" value="POST A COMMENT">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+        createMap();//创建地图
+        setMapEvent();//设置地图事件
+        addMapControl();//向地图添加控件
+    }
+    
+    //创建地图函数：
+    function createMap(){
+        var map = new BMap.Map("map");//在百度地图容器中创建一个地图
+        var point = new BMap.Point(116.395645,39.929986);//定义一个中心点坐标
+        map.centerAndZoom(point,12);//设定地图的中心点和坐标并将地图显示在地图容器中
+        window.map = map;//将map变量存储在全局
+    }
+    
+    //地图事件设置函数：
+    function setMapEvent(){
+        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard();//启用键盘上下左右键移动地图
+    }
+    
+    //地图控件添加函数：
+    function addMapControl(){
+        //向地图中添加缩放控件
+	var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+	map.addControl(ctrl_nav);
+                }
+    
+    
+    initMap();//创建和初始化地图
+</script>
+</html>
