@@ -17,6 +17,8 @@
         this.minHeight = opt.minHeight;
         this.padding = opt.padding;
         this.lastRowItems = [];
+        this.top = 0;
+        this.left = 0;
     }
 
     BarrelGallery.prototype = {
@@ -24,58 +26,102 @@
             this.append(imgs);
         },
 
-        newRow: function() {
-            var row = document.createElement('div');
-            row.className = this.rowClassName;
-            this.container.appendChild(row);
-            return row;
-        },
-
-        renderRow: function(row, items, ratio) {
-            var height = this.minHeight * ratio,
-                elem;
-
-            row.style.height = height + 'px';
-            row.innerHTML = '';
-            for (var i = 0, len = items.length; i < len; i++) {
-                elem = createItem(items[i].src);
-                elem.style.width = items[i].ratio * height + 'px';
-                row.appendChild(elem);
-            }
-        },
-
-        append: function(photos) {
-            var elem, currentW, rowWidth = 0, count = 1, photo, row, ratio;
+        append: function(data) {
+            var i, item, itemWidth, len, ratio;
             
-            if (this.lastRowItems.length > 0) {
-                count = this.lastRow.children.length;
-                rowWidth += this.lastRowWidth;
-                row = this.lastRow;
-            } else {
-                row = this.newRow();
-            }
+            for (i = 0, len = data.length; i < len; i++) {
+                ratio = data[i].width / data[i].height;
+                itemWidth = this.minHeight * ratio;
+                item = createItem(data[i].src);
+                this.container.appendChild(item);
+                
+                this.left += this.padding;
+                setItem(item, {
+                    top: this.top,
+                    left: this.left,
+                    width: itemWidth,
+                    height: this.minHeight
+                });
+                this.left += itemWidth;
+    
+                if (this.left > this.width) {
+                    this.left -= itemWidth - this.padding;
 
-            for (; photo = photos.shift(); count ++) {
-                currentW = this.minHeight * photo.ratio;
-                rowWidth += currentW + this.padding;
+                    this.renderRow();
 
-                if (rowWidth > this.width) {
-                    rowWidth = rowWidth - currentW - this.padding * count;
-                    ratio = (this.width - this.padding * (count - 1)) / rowWidth;
-                    this.renderRow(row, this.lastRowItems, ratio);
-
-                    row = this.newRow();
+                    setItem(item, {
+                        top: this.top,
+                        left: this.left
+                    });
+                    this.container.style.height = this.top + this.minHeight + this.padding + 'px';
                     this.lastRowItems = [];
-                    rowWidth = currentW + this.padding;
-                    count = 1;
+                    this.left += itemWidth;
                 }
-                this.lastRowItems.push(photo);
+
+                this.lastRowItems.push({
+                    item: item,
+                    ratio: ratio
+                });
+            }
+        },
+
+        renderRow: function() {
+            var rowLen = this.lastRowItems.length,
+                ratio = this.calcRatio(this.width - this.padding * rowLen, this.left - this.padding * rowLen),
+                rowHeight = ratio * this.minHeight,
+                items = this.lastRowItems,
+                i, widthArr = [];
+
+            this.top += rowHeight + this.padding;
+            this.left = this.padding;
+            for (i = 0; i < rowLen; i++) {
+                items[i].item.style.height = rowHeight + 'px';
+                widthArr.push(Math.ceil(items[i].ratio * rowHeight));
             }
 
-            this.renderRow(row, this.lastRowItems, 1);
-            this.lastRow = row;
-            this.lastRowWidth = rowWidth;
+            this.renderItem(widthArr);
+        },
+
+        // 去除浮点数运算造成的尾部不对齐
+        renderItem: function(widthArr) {
+            var i, offset, tmp, len = widthArr.length,
+                items = this.lastRowItems,
+                left = this.padding,
+                rowWidth = widthArr.reduce(function(x, y) {
+                return x + y;
+            }, 0);
+
+            if (rowWidth + this.padding * len !== this.width) {
+                offset = this.width - rowWidth - this.padding * len;
+                tmp = offset > 0 ? Math.ceil(offset / len) : Math.floor(offset / len);
+
+                for (i = 0; offset > tmp; i++) {
+                    setItem(items[i].item, {
+                        left: left,
+                        width: widthArr[i] + tmp
+                    });
+                    left += widthArr[i] + tmp + this.padding;
+                    offset -= tmp;
+                }
+
+                setItem(items[i].item, {
+                    left: left,
+                    width: widthArr[i] + offset
+                });
+            }
+        },
+
+        calcRatio: function(current, origin) {
+            return current / origin;
         }
+    }
+
+    // 设置元素的position和宽高
+    function setItem(item, opt) {
+        if (opt.top !== undefined) item.style.top = opt.top + 'px';
+        if (opt.left !== undefined)item.style.left = opt.left + 'px';
+        if (opt.width !== undefined) item.style.width = opt.width + 'px';
+        if (opt.width !== undefined) item.style.height = opt.height + 'px';
     }
     
     // 创建行内的元素，用图片填满，并且保持图片宽高比
@@ -101,7 +147,7 @@
         
         getNewContent(function(arr) {
             gallery.init(choice(arr));
-        }, 'img.json');
+        }, 'items.json');
 
         window.addEventListener('scroll', function() {
             if (load()) {
@@ -113,7 +159,7 @@
                         gallery.append(choice(arr));
                         loading.style.display = 'none';
                         flag = false;
-                    }, 'img.json');
+                    }, 'items.json');
                 }, 2000);
             }
         });
